@@ -38,8 +38,8 @@ def run_setup():
     
 if __name__ == "__main__":
     venv_path = "venv"
-    create_virtual_environment(venv_path)
+    create_venv(venv_path)
     sys.executable = f"{venv_path}/bin/python" if sys.platform != "win32" else f"{venv_path}\\Scripts\\python.exe"
     
-    install_dependencies()
+    install_requirements()
     run_setup()
