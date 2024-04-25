@@ -36,6 +36,12 @@ def run_setup():
     subprocess.check_call([sys.executable, "setup.py", "install"])
     print("Package installed.")
     
+def launch_server(venv_path="venv"):
+    print("Executing /front_end/app.py...")
+    python_executable = os.path.join(venv_path, "bin", "python") if os.name != "nt" else os.path.join(venv_path, "Scripts", "python")
+    subprocess.check_call([python_executable, "/front_end/app.py"])
+    print("/front_end/app.py executed.")
+        
 if __name__ == "__main__":
     venv_path = "venv"
     create_venv(venv_path)
@@ -43,3 +49,4 @@ if __name__ == "__main__":
     
     install_requirements()
     run_setup()
+    launch_server(venv_path)
