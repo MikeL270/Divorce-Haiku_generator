@@ -1,0 +1,56 @@
+@import url(https://fonts.cdnfonts.com/css/liberation-serif);
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url('../images/background.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Liberation Serif', sans-serif;
+    background-position: center;
+    display: flex;
+    min-height: 88vh;
+    background-attachment: fixed;
+    margin:6vh 10vw 6vh;
+    z-index: -1;
+    flex-direction: column;
+    
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(2px); 
+    height: fit-content;
+    border-radius: 4px;
+    justify-self: flex-start;
+}
+
+    .page-title h1 {
+        color: rgb(10, 12, 108);
+        font-size: 64px;
+    }
+
+    .page-title h2 {
+        color: rgb(236, 89, 26);
+    }
+
+footer {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    height: 6vh;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-family: 'Liberation Serif', sans-serif;
+    z-index: 2;
+}

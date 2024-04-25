@@ -10,10 +10,9 @@ from dotenv import load_dotenv
 import os
 import time
 
-load_dotenv()
-
 class DivorceLetterGenerator:
     def __init__(self, api_key = os.getenv("OPENAI_API_KEY")):
+        load_dotenv()
         self.api_key = api_key
         self.assistant_id="asst_OCpjHEWcKCkxQInod0LYTRED"
         self.client = OpenAI(

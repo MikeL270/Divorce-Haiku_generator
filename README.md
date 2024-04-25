@@ -22,4 +22,10 @@ This generator utilizes the power of Python and a custom GPT model to provide a 
 
 ## Getting Started
 
-This project is currently being developped, check back soon for information on how to use the tool
+### Creating an environment
+Until the generator is finished and deployable as a docker image 
+
+### Installing the generator
+
+For now the haiku generator is not available on
+PyPi as the generator is far from complete, however, it is very beneficial to be able to have the generator installed as a package in your environment.
