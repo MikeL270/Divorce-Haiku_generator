@@ -5,7 +5,7 @@
 # Last updated 4/25/2024
 #-----------------------------------------------------------------------------------------------------------#
 import os
-import subprocecess
+import subprocess
 import sys
 
 def create_venv(path):
