@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css' ) }}"/>
-        
+        <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
     </head>
     <body>
         <header>
@@ -45,9 +45,15 @@
                 <pre id="haiku_box"></pre>
             </div>
         </main>
-        <footer>&copy; 
-            <script>document.write(new Date().getFullYear())</script> 
-            Michael B. Lance, all rights reserved | Alpha v1.0</p> 
+        <footer>
+            <div>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Michael B. Lance, all rights reserved | Alpha v1.1</p> 
+            </div>
+            <div class="social_links">
+                <a href="https://github.com/MikeL270/Divorce-Haiku_generator" target="_blank">
+                    <iconify-icon icon="mdi:github" width="1.2em" height="1.2em"  style="color: #0406a4"></iconify-icon>
+                </a>
+            </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="static/javascript/buttons.js"></script>

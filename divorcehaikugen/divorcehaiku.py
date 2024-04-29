@@ -6,13 +6,11 @@
 # I am so very sorry this exists
 #-----------------------------------------------------------------------------------------------------------#
 from openai import OpenAI
-from dotenv import load_dotenv
 import os
 import time
 
 class DivorceLetterGenerator:
-    def __init__(self, api_key = os.getenv("OPENAI_API_KEY")):
-        load_dotenv()
+    def __init__(self, api_key):
         self.api_key = api_key
         self.assistant_id="asst_OCpjHEWcKCkxQInod0LYTRED"
         self.client = OpenAI(
@@ -21,9 +19,10 @@ class DivorceLetterGenerator:
         self.assistant = self.client.beta.assistants.retrieve(
             assistant_id=self.assistant_id
         )
+        self.thread = self.client.beta.threads.create()
         
     def generate_haiku(self, divorced_party_name, anger_level, divorce_reason):
-        self.thread = self.client.beta.threads.create()
+        
         
         message = self.client.beta.threads.messages.create(
             thread_id = self.thread.id,
@@ -54,6 +53,9 @@ class DivorceLetterGenerator:
                 print(run.status)
                 time.sleep(0.1) 
 
+    def update_api_key(self, new_key):
+        self.api_key = new_key
+        
 if __name__ == "__main__":
     example_letter = DivorceLetterGenerator()
     print(example_letter.generate_haiku(divorced_party_name = "Karen", anger_level = "5", divorce_reason = "farting in her sleep"))
