@@ -6,27 +6,7 @@
        <script>
         function changeBackground() {
             var anger = document.getElementById('anger_input').value;
-            if (anger == 1) {
-                document.body.style.backgroundImage =  "url('static/images/anger1.webp')"
-            } else if (anger == 2) {
-                document.body.style.backgroundImage =  "url('static/images/anger2.webp')"
-            } else if (anger == 3) {
-                document.body.style.backgroundImage =  "url('static/images/anger3.webp')"
-            } else if (anger == 4) {
-                document.body.style.backgroundImage =  "url('static/images/anger4.webp')"
-            } else if (anger == 5) {
-                document.body.style.backgroundImage =  "url('static/images/anger5.webp')"
-            } else if (anger == 6) {
-                document.body.style.backgroundImage =  "url('static/images/anger6.webp')"
-            } else if (anger == 7) {
-                document.body.style.backgroundImage =  "url('static/images/anger7.webp')"
-            } else if (anger == 8) {
-                document.body.style.backgroundImage =  "url('static/images/anger8.webp')"
-            } else if (anger == 9) {
-                document.body.style.backgroundImage =  "url('static/images/anger9.webp')"
-            } else if (anger == 10) {
-                document.body.style.backgroundImage =  "url('static/images/anger10.webp')"
-            }
+            document.body.style.backgroundImage =  `url('static/images/anger${anger}.webp')`
 
         }
        </script>
