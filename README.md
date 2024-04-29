@@ -20,12 +20,43 @@ This generator utilizes the power of Python and a custom GPT model to provide a 
 - **Flask:** Lightweight web framework used for the user interface.
 - **OpenAI Module:** For integrating the custom-trained GPT model.
 
-## Getting Started
+# Getting Started
 
-### Creating an environment
-Until the generator is finished and deployable as a docker image 
+## Notice
+This readme was thrown together quickly and stupidly, as this project's due date gets closer, I WILL FIX THIS.
+But there are more important things in my life to attend to, other finals.
 
-### Installing the generator
+### Creating the environment // Installing the generator
 
-For now the haiku generator is not available on
-PyPi as the generator is far from complete, however, it is very beneficial to be able to have the generator installed as a package in your environment.
+- **install.py** Running install.py should be all you need to set up the environment
+If install.py does not work you can set things up manually.
+
+```bash
+# Create a Python virtual environment
+python -m venv env
+
+# Activate the virtual environment
+source env/bin/activate
+```
+Next you need to install the requirements and the generator itself (as a module).
+```bash
+# Install all needed dependencies with pip
+pip3 install -R requirements.txt
+
+# Install the generator
+pip3 install .
+```
+
+### Running the server
+
+Finally, run the server.
+```bash
+cd front_end/
+
+python app.py
+```
+
+Then connect to the server
+
+http://127.0.0.1:5000/
+(if ran locally)

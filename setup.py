@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="divorce_haiku_generator",
+    name="divorcehaikugen",
     version="0.1",
     packages=find_packages(),
     install_requires=[

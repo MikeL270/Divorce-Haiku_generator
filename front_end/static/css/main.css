@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url('../images/background.webp');
+    background-image: url('../images/anger1.webp');
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Liberation Serif', sans-serif;
@@ -14,30 +14,104 @@ body {
     min-height: 88vh;
     background-attachment: fixed;
     margin:6vh 10vw 6vh;
-    z-index: -1;
     flex-direction: column;
     
 }
-
 .page-title {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    backdrop-filter: blur(2px); 
+    flex-direction: column; 
     height: fit-content;
     border-radius: 4px;
     justify-self: flex-start;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
 }
-
     .page-title h1 {
         color: rgb(10, 12, 108);
-        font-size: 64px;
+        font-size: 5vh;
+        font-weight: bold;
+        text-align: center;
     }
-
     .page-title h2 {
         color: rgb(236, 89, 26);
+        font-size: 2vh;
+        font-weight: bold;
+        text-align: center;
     }
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+    .input_container {
+        opacity: 0.9;
+        font-size: 2vh;
+    }
+    .input_container input {
+        height: 2.5vh;
+        font-size: 1.5vh;
+    }
+    .input_container select {
+        height: 2.5vh;
+        opacity: 0.9;
+        font-size: 1.5vh;
+    }
+    .input_container label {
+        font-size: 2vh;
+        width: auto;
+        
+        font-weight: bold;
+        color: rgb(10, 12, 108);
+        text-shadow: 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+    button {
+        color: rgb(236, 89, 26);
+        background-color: rgb(10, 12, 108);
+        margin: 1%;
+        height: 5vh;
+        width: 100%;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        font-size: 2vh;
+        font-weight: bold;
+        text-align: center;
+        padding: 2%;
+    }
+        button:hover {
+            color: rgb(10, 12, 108);
+            background-color: rgb(236, 89, 26);
+     }
+    .response-box {
+        margin: 2%;
+        background-color: white;
+        width: 100%;
+        min-width: 329;
+        opacity: 0.9;
+        height: 40vh;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        
+    }
+        .response-box pre {
+            font-size: 4vh;
+            text-align: center;
+            line-height: 10vh;
 
+        }
+    @media(max-width: 952px){
+        .response-box pre {
+            font-size: 2.5vh;
+        }
+        }
+    @media(max-width: 732px){
+        .response-box pre {
+            font-size: 1.5vh;
+        }
+        }
 footer {
     position: fixed;
     display: flex;
@@ -53,4 +127,5 @@ footer {
     font-size: 24px;
     font-family: 'Liberation Serif', sans-serif;
     z-index: 2;
+    text-shadow: 0 2px 4px rgba(14, 14, 14, 0.6);
 }

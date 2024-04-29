@@ -1,23 +1,114 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Divorce Haiku Generator</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+       <script>
+        function changeBackground() {
+            var anger = document.getElementById('anger_input').value;
+            if (anger == 1) {
+                document.body.style.backgroundImage =  "url('static/images/anger1.webp')"
+            } else if (anger == 2) {
+                document.body.style.backgroundImage =  "url('static/images/anger2.webp')"
+            } else if (anger == 3) {
+                document.body.style.backgroundImage =  "url('static/images/anger3.webp')"
+            } else if (anger == 4) {
+                document.body.style.backgroundImage =  "url('static/images/anger4.webp')"
+            } else if (anger == 5) {
+                document.body.style.backgroundImage =  "url('static/images/anger5.webp')"
+            } else if (anger == 6) {
+                document.body.style.backgroundImage =  "url('static/images/anger6.webp')"
+            } else if (anger == 7) {
+                document.body.style.backgroundImage =  "url('static/images/anger7.webp')"
+            } else if (anger == 8) {
+                document.body.style.backgroundImage =  "url('static/images/anger8.webp')"
+            } else if (anger == 9) {
+                document.body.style.backgroundImage =  "url('static/images/anger9.webp')"
+            } else if (anger == 10) {
+                document.body.style.backgroundImage =  "url('static/images/anger10.webp')"
+            }
 
-{% block head %}
-
-{% endblock %}
-
-{% block body %}
-    <header>
-        <div class="page-title">
-            <h1> Divorce Letter Haiku Generator </h1>
-            <h2> It's short, it's so sweet,
-                You can take the children now,
-                Peaceful parting gift. </h2>
-        </div>
-    </header>
-    <main>
+        }
+       </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css' ) }}"/>
         
-    </main>
-    <footer>&copy; 
-        <script>document.write(new Date().getFullYear())</script> 
-        Michael B. Lance, all rights reserved</p> 
-    </footer>
-{% endblock %}
+    </head>
+    <body>
+        <header>
+            <div class="page-title">
+                <h1> Divorce Letter Haiku Generator </h1>
+                <h2> It's short, it's so sweet,
+                    You can take the children now,
+                    Peaceful parting gift. </h2>
+            </div>
+        </header>
+        <main>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('generate_button').addEventListener('click', function() {
+                        var name = document.getElementById('name_input').value;
+                        var reason = document.getElementById('reason_input').value;
+                        var anger_level = document.getElementById('anger_input').value;
+    
+                        axios({
+                            method: 'post',
+                            url: 'get_haiku',
+                            data: {
+                                name: name,
+                                reason: reason,
+                                anger_level: anger_level,
+                            },
+                            timeout: 6000
+                        }).then(function(response) {
+                            if (response.status === 204) {
+                                document.getElementById('haiku_box').innerHTML = 'Haiku Request Failed, Check your OpenAI account';
+                            } else {
+                                document.getElementById('haiku_box').innerHTML = response.data.haiku;
+                            }
+                        }).catch(function(error){
+                            if (error.code === 'ECONNABORTED') {
+                                document.getElementById('haiku_box').innerHTML = 'Request timed out, please try again'
+                            } else {
+                                var errorMessage = error.response ? error.response.data : error.message;
+                                document.getElementById('haiku_box').innerHTML = 'Error executing command: ' + errorMessage;
+                            }
+                        });
+                    });
+                });
+            </script>
+            <div class="input_container">
+                
+                <label for="name_input">Name:</label>
+                <input type="text" id="name_input" placeholder="Enter name">
+                
+                <label for="reason_input">Reason:</label>
+                <input type="text" id="reason_input" placeholder="Enter reason">
+
+                <label for="anger_input">Anger:</label>
+                <select id="anger_input" onclick="changeBackground()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <button id="generate_button">Generate Haiku</button>
+            <div id="response_area" class="response-box">
+                <pre id="haiku_box"></pre>
+            </div>
+        </main>
+        <footer>&copy; 
+            <script>document.write(new Date().getFullYear())</script> 
+            Michael B. Lance, all rights reserved | Alpha v1.0</p> 
+        </footer>
+    </body>
+</html>

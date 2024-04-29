@@ -1,4 +1,4 @@
 .env
 divorce-letter-haikus/
 build/
-divorce_haiku_generator.egg-info/
+divorcehaikugen.egg-info/
