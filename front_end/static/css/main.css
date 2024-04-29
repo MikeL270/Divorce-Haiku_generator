@@ -97,12 +97,12 @@ main {
         
     }
         .response-box pre {
-            font-size: 4vh;
+            font-size: 3.5vh;
             text-align: center;
             line-height: 10vh;
 
         }
-    @media(max-width: 952px){
+    @media(max-width: 1010px){
         .response-box pre {
             font-size: 2.5vh;
         }

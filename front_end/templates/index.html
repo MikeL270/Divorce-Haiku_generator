@@ -2,14 +2,6 @@
 <html lang="en">
     <head>
         <title>Divorce Haiku Generator</title>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-       <script>
-        function changeBackground() {
-            var anger = document.getElementById('anger_input').value;
-            document.body.style.backgroundImage =  `url('static/images/anger${anger}.webp')`
-
-        }
-       </script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -26,39 +18,6 @@
             </div>
         </header>
         <main>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('generate_button').addEventListener('click', function() {
-                        var name = document.getElementById('name_input').value;
-                        var reason = document.getElementById('reason_input').value;
-                        var anger_level = document.getElementById('anger_input').value;
-    
-                        axios({
-                            method: 'post',
-                            url: 'get_haiku',
-                            data: {
-                                name: name,
-                                reason: reason,
-                                anger_level: anger_level,
-                            },
-                            timeout: 6000
-                        }).then(function(response) {
-                            if (response.status === 204) {
-                                document.getElementById('haiku_box').innerHTML = 'Haiku Request Failed, Check your OpenAI account';
-                            } else {
-                                document.getElementById('haiku_box').innerHTML = response.data.haiku;
-                            }
-                        }).catch(function(error){
-                            if (error.code === 'ECONNABORTED') {
-                                document.getElementById('haiku_box').innerHTML = 'Request timed out, please try again'
-                            } else {
-                                var errorMessage = error.response ? error.response.data : error.message;
-                                document.getElementById('haiku_box').innerHTML = 'Error executing command: ' + errorMessage;
-                            }
-                        });
-                    });
-                });
-            </script>
             <div class="input_container">
                 
                 <label for="name_input">Name:</label>
@@ -90,5 +49,8 @@
             <script>document.write(new Date().getFullYear())</script> 
             Michael B. Lance, all rights reserved | Alpha v1.0</p> 
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="static/javascript/buttons.js"></script>
+        <script src="static/javascript/axios_handler.js"></script>
     </body>
 </html>
