@@ -23,7 +23,6 @@ class DivorceLetterGenerator:
         
     def generate_haiku(self, divorced_party_name, anger_level, divorce_reason):
         
-        
         message = self.client.beta.threads.messages.create(
             thread_id = self.thread.id,
             role = "user",
@@ -55,6 +54,9 @@ class DivorceLetterGenerator:
 
     def update_api_key(self, new_key):
         self.api_key = new_key
+        self.client = OpenAI(
+            api_key = self.api_key
+        )
         
 if __name__ == "__main__":
     example_letter = DivorceLetterGenerator()

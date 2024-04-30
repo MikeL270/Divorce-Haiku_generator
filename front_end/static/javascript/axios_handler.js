@@ -1,7 +1,7 @@
 // Handles Axios requests sent from the client to the flask webserver. 
 // Poorly written by Michael Lance (I don't know much JS)
 // Date of oopsie: 4/28/2024
-// Last ruined: 4/28.2024
+// Last ruined: 4/30/2024
 // If they make it illegal for me to program, I understand
 //-------------------------------------------------------------------------------------------------------------------//
 
@@ -22,17 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
             timeout: 6000
         }).then(function(response) {
             if (response.status === 204) {
-                document.getElementById('haiku_box').innerHTML = 'Haiku Request Failed, Check your OpenAI account';
+                document.getElementById('haiku-box').innerHTML = 'Haiku Request Failed, Check your OpenAI account';
             } else {
-                document.getElementById('haiku_box').innerHTML = response.data.haiku;
+                document.getElementById('haiku-box').innerHTML = response.data.haiku;
             }
         }).catch(function(error){
             if (error.code === 'ECONNABORTED') {
-                document.getElementById('haiku_box').innerHTML = 'Request timed out, please try again'
+                document.getElementById('haiku-box').innerHTML = 'Request timed out, please try again'
             } else {
                 var errorMessage = error.response ? error.response.data : error.message;
-                document.getElementById('haiku_box').innerHTML = 'Error executing command: ' + errorMessage;
+                document.getElementById('haiku-box').innerHTML = 'Error executing command: ' + errorMessage;
             }
         });
     });
 });
+
+// vuejs -- use it or fail the class
