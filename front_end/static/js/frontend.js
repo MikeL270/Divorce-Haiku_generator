@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = createApp({
         data() {
             return {
-                generatedHaiku: ''
+                generatedHaiku: '',
+                genTabs: [{isVisible: true}, {isVisible: false}],
+                outTabs: [{isVisible: true}, {isVisible: false}],
             };
+        },
+        computed: {
+            displayState: function () {
+                return this.isVisible ? "flex" : "none"; 
+            }
         },
         methods: {
             send_haiku() {
@@ -40,7 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
             },
-
+            toggle_tab(tabArray, index) {
+                this[tabArray][index].isVisible = !this[tabArray][index].isVisible;
+            },
         }
     });
 
