@@ -7,62 +7,49 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css' ) }}"/>
         <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="{{url_for('static', filename='js/frontend.js')}}"></script>
     </head>
     <body>
         <header>
                 <h1> Divorce Letter Haiku Generator </h1>
         </header>
-        <main id="main-window">
-            <div class="primary-window">
-                <div id="generator-menu" class="menu-box">
-                    <label for="name_input">Name:</label>
-                    <input type="text" id="name_input" placeholder="Enter name">
-                    <label for="reason_input">Reason:</label>
-                    <input type="text" id="reason_input" placeholder="Enter reason">
-                    <label for="anger_input">Anger:</label>
-                    <input type="range" id="anger_input" min="1" max="10" value="1">
-                    <button id="generate_button">
-                        <p>Generate Haiku</p>
-                    </button>
-                    <div class="welcome-box">
-                        <p>Welcome to Michael Lance's ridiculous Advanced Python Programming final! And yes, this was seriously turned
-                        in for college credit. This wacky tool leverages OpenAi's api module for the wacky snake language to generate
-                        hilarious (sometimes) haiku divorce letters. </p>
-                        <br>
-                        <p>This spicy webapp uses flask on the server side to interact with a custom haiku generator python module I 
-                        wrote instead of having a social life. This little mess is all tied together with some swanky (new to me)
-                        javascript on the client side utilizing axios to handle asynchronous communication with the server.
-                        </p>
-                        <br>
-                        <p>It should be obvious this site is intended to be a light hearted joke, but if you actually serve one of
-                            these haikus with your divorce papers, more power to ya. (for legal reasons thats a joke)
-                        </p>
-                        <br>
-                        <p>Yeah, I am definitely not the kid my parents brag about, and honestly
-                        I wouldn't brag about me either. </p>
+        <main>
+            <div id="vue-container">
+                <div id="options-container" class="ui-container">
+                    <div id="generator-options">
+                        <label for="name-input">Name:</label>
+                        <input type="text" id="name-input" placeholder="Enter name">
+                        <label for="reason-input">Reason:</label>
+                        <input type="text" id="reason-input" placeholder="Enter reason">
+                        <label for="anger-input">Anger:</label>
+                        <input type="range" id="anger-input" min="1" max="10" value="1">
+                        <button id="generate_button">
+                            <p>Generate Haiku</p>
+                        </button>
                     </div>
-                    <button class="hide-window" id="peek-background">
-                    <p>peek at the background (cick and hold)</p>
-                    </button>
+                    <div id="gen-nav" class="navigation-bar">
+                        <button id="generator-button" class="navigation-button">
+                            <p>Generator</p>
+                        </button>
+                        <button id="settings-button" class="navigation-button">
+                            <p>Settings</p>
+                        </button>
+                    </div>
                 </div>
-                <div id="settings-menu" style="display: none">
-
-                </div>
-                <div id="response-area" class="response-box">
-                    <pre id="haiku-box"></pre>
-                </div>
-                
-                
-            </div>
-            <div class="tool_bar" id="menu-bar">
-                    <button id="generator-button" class="menu-button" conclick="showGenerator()">
-                        <p>Generator</p>
-                    </button>
-                    <button id="settings-button" class="menu-button" onclick="showSettings()">
-                        <p>Settings</p>
-                    </button>
-                    
-                </div>            
+                <div id="output-container" class="ui-container">
+                    <div id="output-window">
+                        <pre id="output"></pre>
+                    </div>
+                        <div id="output-nav" class="navigation-bar">
+                            <button id="output-button" class="navigation-button">
+                                <p>Output</p>
+                            </button>
+                            <button id="haiku-record-ubtton" class="navigation-button">
+                                <p>Recorded Haikus</p>
+                            </button>
+                        </div>
             </div>
         </main>
         <footer>
@@ -75,10 +62,4 @@
                 </a>
             </div>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="static/javascript/buttons.js"></script>
-        <script src="static/javascript/axios_handler.js"></script>
-        <script src="static/javascript/peek_background.js"></script>
-        <script src="static/javascript/change_background.js"></script>
-    </body>
 </html>
