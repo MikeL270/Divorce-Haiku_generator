@@ -20,12 +20,12 @@
                 <div id="options-container" class="ui-container">
                     <div id="generator-options">
                         <label for="name-input">Name:</label>
-                        <input type="text" id="name-input" placeholder="Enter name">
+                        <input type="text" ref="nameInputRef" id="name-input" placeholder="Enter name">
                         <label for="reason-input">Reason:</label>
-                        <input type="text" id="reason-input" placeholder="Enter reason">
+                        <input type="text" ref="reasonInputRef" id="reason-input" placeholder="Enter reason">
                         <label for="anger-input">Anger:</label>
-                        <input type="range" id="anger-input" min="1" max="10" value="1">
-                        <button id="generate_button">
+                        <input type="range" ref="angerInputRef" id="anger-input" min="1" max="10" value="1">
+                        <button id="generate_button" v-on:click="send_haiku()">
                             <p>Generate Haiku</p>
                         </button>
                     </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div id="output-container" class="ui-container">
                     <div id="output-window">
-                        <pre id="output"></pre>
+                        <pre id="output">{{ '{{ generatedHaiku }}' }}</pre>
                     </div>
                         <div id="output-nav" class="navigation-bar">
                             <button id="output-button" class="navigation-button">
