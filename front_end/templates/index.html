@@ -8,8 +8,19 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css' ) }}"/>
         <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
         <script src="{{url_for('static', filename='js/frontend.js')}}"></script>
+        <script>
+            // I could not dedicate the time to write this functionality in vue.js as exactly how to
+            // do it is not straight forward. So, instead I will write it in plain js so I can turn
+            // this in on time.
+            document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('anger-input').addEventListener('input', function(){
+                var anger = document.getElementById('anger-input').value;
+                document.body.style.backgroundImage = `url('static/images/anger${anger}.webp')`
+                })
+            })
+        </script>
     </head>
     <body>
         <header>

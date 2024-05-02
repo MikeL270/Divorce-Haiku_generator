@@ -1,17 +1,17 @@
 # Flask webserver for Haiku Divorce Letter Generator
 # Regretabbly made by Michael Lance
 # Date of crime: 4/25/2024
-# Last messed with: 4/28/2024
+# Last messed with: 5/2/2024
 #-----------------------------------------------------------------------------------------------------------#
 from flask import Flask, render_template, url_for, jsonify, request
 import os
 import divorcehaikugen
-from dotenv import load_dotenv
+from dotenv import load_dotenv, set_key
 #-----------------------------------------------------------------------------------------------------------#
 # Basic Config
 app = Flask(__name__)
 
-load_dotenv() # Load environmnet variables
+load_dotenv(dotenv_path=".env") # Load environmnet variables
 
 # Check if the user has set a custom API key in the settings
 # THIS SHOULD ONLY BE USED WHEN SELF HOSTING
@@ -42,12 +42,16 @@ def get_haiku():
 @app.route("/set_api_key", methods=["POST"])
 def set_api_key():
     global generator
-    # Save the new key to the environment variables
-    os.environ["CUSTOM_API_KEY"] = new_api_key
-    # Pass the new api key to the generator 
+
     print("hi mom")
     try:
         data = request.get_json()
+            # Save the new key to the environment variables
+        os.environ["CUSTOM_API_KEY"] = data["key"]
+        set_key(dotenv_path=".env", key_to_set="CUSTOM_API_KEY", value_to_set=data["key"])
+        
+        
+        # Pass the new api key to the generator 
         generator.update_api_key(data["key"])
         return jsonify({"message": "API key updated successfully"}), 200
         

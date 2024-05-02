@@ -5,8 +5,8 @@ setup(
     version="0.1",
     packages=find_packages(),
     install_requires=[
-        'openai',   # Ensure this is the correct package name on PyPI
-        'python-dotenv',  # This is the typical PyPI package name for dotenv
+        'openai', 
+        'python-dotenv',  
     ],
     author="Michael Lance",
     author_email="michaelbraydenlance@gmail.com",
