@@ -48,6 +48,7 @@ main {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    overflow: hidden;
    }
         .ui-container {
             background-color: var(--box-background);
@@ -82,46 +83,36 @@ main {
                         background-color: var(--main-orange);
                         color: var(--main-blue);
                     }
-            #generator-options {
+            .ui-tab {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
                 height: auto;
             }
-            #settings-options {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                height: auto;
-            }
-            #generator-options label, input {
+            .ui-tab label, input {
                 width: 75%;
                 margin: 1%;
                 height: 15%;
                 font-size: 1.2em;
                 font-weight: bold;
             }
-                #generator-options label {
+                .ui-tab label {
                     color: white;
                 }
-            #generator-options button {
+            .ui-tab button {
                 width: 75%;
                 font-size: 1.5em;
                 background-color: var(--main-blue);
                 color: var(--main-orange);
             }
-                #generator-options button:hover {
+                .ui-tab button:hover {
                     background-color: var(--main-orange);
                     color: var(--main-blue);
                 }
-            #output-container {
-                justify-content: center;
-            }
                 #output-window{
-                    width: 75%;
-                    height: 75%;
+                    width: 99%;
+                    height: 90%;
                     background-color: white;
                     align-self: center;
                     border-radius: 4px;
@@ -135,6 +126,7 @@ main {
                     #output-container pre {
                         white-space: pre-wrap;
                         word-wrap: break-word; 
+                        font-size: 3em;
                       }
 footer {
     position: fixed;
@@ -150,7 +142,6 @@ footer {
     color: rgb(4, 6, 164);;
     font-size: 24px;
     font-family: 'Liberation Serif', sans-serif;
-    z-index: 2;
     text-shadow: 0 2px 4px rgba(14, 14, 14, 0.6);
     display: flex;
     justify-content: center;
@@ -192,4 +183,7 @@ footer {
             height: 80%;
             width: 80%;
         }
+            #output-container pre {
+                font-size: 2em;
+            }
     }

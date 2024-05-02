@@ -12,20 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
         data() {
             return {
                 generatedHaiku: '',
-                genTabs: [{isVisible: true}, {isVisible: false}],
-                outTabs: [{isVisible: true}, {isVisible: false}],
+                activeGenTab: 1,
+                activeOutTab: 1,
             };
-        },
-        computed: {
-            displayState: function () {
-                return this.isVisible ? "flex" : "none"; 
-            }
         },
         methods: {
             send_haiku() {
-                var name = this.$refs.nameInputRef.value;
-                var reason = this.$refs.reasonInputRef.value;
-                var anger_level =  this.$refs.angerInputRef.value;
+                let name = this.$refs.nameInputRef.value;
+                let reason = this.$refs.reasonInputRef.value;
+                let anger_level =  this.$refs.angerInputRef.value;
 
                 console.log('Sending haiku for:', name, reason, anger_level);
                 
@@ -47,9 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
             },
-            toggle_tab(tabArray, index) {
-                this[tabArray][index].isVisible = !this[tabArray][index].isVisible;
+            activate_gen_tab(tabId) {
+                this.activeGenTab = tabId;
             },
+            activate_out_tab(tabId) {
+                this.activeOutTab = tabId;
+            },
+
         }
     });
 
