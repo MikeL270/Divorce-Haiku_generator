@@ -40,12 +40,19 @@ def get_haiku():
         return jsonify(error=str(e)), 500
     
 @app.route("/set_api_key", methods=["POST"])
-def set_api_key(new_api_key):
+def set_api_key():
     global generator
     # Save the new key to the environment variables
     os.environ["CUSTOM_API_KEY"] = new_api_key
     # Pass the new api key to the generator 
-    generator.update_api_key(new_api_key)
+    print("hi mom")
+    try:
+        data = request.get_json()
+        generator.update_api_key(data["key"])
+        return jsonify({"message": "API key updated successfully"}), 200
+        
+    except Exception as e:
+        return jsonify(error=str(e)), 500
     
 if __name__ == "__main__":
     app.run(debug=True)

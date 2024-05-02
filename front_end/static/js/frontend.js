@@ -12,16 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
         data() {
             return {
                 generatedHaiku: '',
-                activeGenTab: 1,
-                activeOutTab: 1,
+                activeTab: 1,
             };
         },
         methods: {
+            send_activate_out_tab(tabId) {
+                this.activeOutTab = tabId;
+            },
             send_haiku() {
                 let name = this.$refs.nameInputRef.value;
                 let reason = this.$refs.reasonInputRef.value;
                 let anger_level =  this.$refs.angerInputRef.value;
-
+                
+                this.generatedHaiku = 'generating haiku... please wait...'
                 console.log('Sending haiku for:', name, reason, anger_level);
                 
                 axios({
@@ -42,13 +45,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
             },
+            set_custom_key(){
+            let api_key = this.$refs.apiInputRef.value;
+            console.log(api_key)
+            axios({
+                method: 'post',
+                url: '/set_api_key',
+                data: {
+                    key: api_key
+                },
+                timeout:6000
+            }).then(response => {
+                if (response.status === 204) {
+                    alert('your api_key sucks, get a better one')
+                } else {
+                    alert('Api key was ingested successfully')
+                }
+            }) 
+            },
             activate_gen_tab(tabId) {
-                this.activeGenTab = tabId;
+                this.activeTab = tabId;
             },
-            activate_out_tab(tabId) {
-                this.activeOutTab = tabId;
-            },
-
         }
     });
 

@@ -89,7 +89,16 @@ main {
                 align-items: center;
                 width: 100%;
                 height: auto;
+                margin-bottom: 2%;
             }
+                #settings-disclaimer {
+                    padding: 5%;
+                    color: var(--main-orange);
+                    background-color: var(--main-blue);
+                }
+                #api-button {
+                    margin: 2%;
+                }
             .ui-tab label, input {
                 width: 75%;
                 margin: 1%;
@@ -112,7 +121,7 @@ main {
                 }
                 #output-window{
                     width: 99%;
-                    height: 90%;
+                    height: 99%;
                     background-color: white;
                     align-self: center;
                     border-radius: 4px;
@@ -173,17 +182,8 @@ footer {
         padding-left: 24%;
         padding-bottom: 0;
     }
-        .ui-container:first-child {
-            order: 2;
+
+        #output-container pre {
+            font-size: 2em;
         }
-        .ui-container:last-child {
-            order: 1; 
-        }
-        #output-window {
-            height: 80%;
-            width: 80%;
-        }
-            #output-container pre {
-                font-size: 2em;
-            }
     }

@@ -18,7 +18,7 @@
         <main>
             <div id="vue-container">
                 <div id="options-container" class="ui-container">
-                    <div id="generator-options" class="ui-tab" v-show="activeGenTab === 1"> 
+                    <div id="generator-options" class="ui-tab" v-show="activeTab === 1"> 
                         <label for="name-input">Name:</label>
                         <input type="text" ref="nameInputRef" id="name-input" placeholder="Enter name" >
                         <label for="reason-input">Reason:</label>
@@ -29,8 +29,31 @@
                             <p>Generate Haiku</p>
                         </button>
                     </div>
-                    <div id="settings-options" id="generator-options" class="ui-tab" v-show="activeGenTab === 2">
-                        <p> hi mom</p>
+                    <div id="settings-options" id="generator-options" class="ui-tab" v-show="activeTab === 2">
+                        <div id="settings-disclaimer">
+                            <p>This is an open source project, meaning it was designed so that you can self host
+                                an instance on your own hardware on your own network. That is what this feature 
+                                is meant for. <b>This feature is intentionally disabled on the public web facing
+                                version.</b> 
+                                <br>
+                                <br>
+                            This feature is for your convenience, as I will not fund the api after its initial 
+                            funding is consumed. I do not want to contribute to the garbageware problem and so 
+                            I find it prudent to ensure that even this joke app can still be used after my 
+                            instructor fails me. 
+                            <br> 
+                            <br>
+                            It should go without saying that this open source software comes with absolutely no  
+                            warranty. If you plug your own api key into this software and point it to the 
+                            interwebs and some script kiddie steals it, that is on you. Don't try to sue me, I
+                            clicked the license button in github. (check mate, nerd) 
+                            </p>
+                        </div>
+                        <label for="api-input">API Key:</label>
+                        <input type="text" ref="apiInputRef" id="api-input" placeholder="Please read the text above">
+                        <button id="api-button" @click="set_custom_key()">
+                            <p>Insert API Key</p>
+                        </button>
                     </div>
                     <div id="gen-nav" class="navigation-bar">
                         <button id="generator-button" class="navigation-button" @click="activate_gen_tab(1)">
@@ -42,20 +65,8 @@
                     </div>
                 </div>
                 <div id="output-container" class="ui-container">
-                    <div id="output-window" class="ui-tab" v-show="activeOutTab === 1">
+                    <div id="output-window" class="ui-tab">
                         <pre id="output">{{ '{{ generatedHaiku }}' }}</pre>
-                    </div>
-                        <div id="output-nav" class="navigation-bar">
-                            <button id="output-button" class="navigation-button" @click="activate_out_tab(1)">
-                                <p>Output</p>
-                            </button>
-                            <button id="haiku-record-ubtton" class="navigation-button" @click="activate_out_tab(2)">
-                                <p>Recorded Haikus</p>
-                            </button>
-                        </div>
-                    <div id="recorded-haikus" class="ui-tab" v-show="activeOutTab === 2">
-                        <p>hi mom</p>
-                    </div>
                     </div>
             </div>
         </main>
